@@ -27,8 +27,9 @@ function App() {
         );
 
         if (!userRes.ok) {
-          throw new Error("User not found");
-        }
+  const errorData = await userRes.json();
+  throw new Error(errorData.message);
+}
 
         const userData = await userRes.json();
 
